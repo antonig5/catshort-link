@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Catshort">
+	<script src="../scripts/index.js">
+	</script>
+	<main>
+		<h1>Acorta tus enlaces</h1>
+		<form id="urlForm" method="post">
+			<label for="url">URL</label>
+			<input type="text" name="url" id="url" placeholder="https://example.com" />
+			<label for="custom">Sobre nombre</label>
+			<input type="text" name="custom" id="custom" placeholder="Cat" />
+			<Button title="Shorten" id='short'/>
+			
+		</form>
+		<button class="btn" disabled  id="copy">Copiar</button>
+		<div class="form-a" id="response"> </div>
+		
+		
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	.form-a {
+	border-radius: 10px;
+	border: solid 1px #6a45d9;
+	text-decoration: none;
+	text-align: center;
+	background-color: aliceblue;
+	color: white;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	input {
+		padding: 1rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		border-radius: 4px;
+		background-color: rgba(var(--accent-light), 25%);
+		color: rgb(var(--accent-light));
+		font-size: 1rem;
+	}
+	.btn{
+		background-color: #5a07d7;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 10px;
+		cursor: pointer;
+		margin-bottom: 15px;
+	}
+	.btn:disabled{
+		background-color: #424242;
+		cursor: not-allowed;
+	}
+	
+	
+</style>
