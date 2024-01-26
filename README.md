@@ -10,7 +10,7 @@ npm create astro@latest -- --template basics
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-![just-the-basics](./proyect-view.png)
+![just-the-basics](./public/proyect-view.png)
 
 ## 🚀 Project Structure
 
