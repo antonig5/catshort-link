@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import Alert from '../components/Alert.astro';
 ---
 
 <Layout title="Catshort">
@@ -13,10 +14,12 @@ import Button from '../components/Button.astro';
 			<input type="text" name="url" id="url" placeholder="https://example.com" />
 			<label for="custom">Sobre nombre</label>
 			<input type="text" name="custom" id="custom" placeholder="Cat" />
-			<Button title="Shorten" id='short'/>
+			<Button title="Acortar" id='short'/>
 			
 		</form>
-		<button class="btn" disabled  id="copy">Copiar</button>
+		<Button title="Copiar" disabled={true}  id="copy"/>
+		
+		<Alert id="alert" description='Link copiado correctamente' />
 		<div class="form-a" id="response"> </div>
 		
 		
@@ -62,23 +65,4 @@ import Button from '../components/Button.astro';
 		color: rgb(var(--accent-light));
 		font-size: 1rem;
 	}
-	.btn{
-		background-color: #5a07d7;
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
-		border-radius: 10px;
-		cursor: pointer;
-		margin-bottom: 15px;
-	}
-	.btn:disabled{
-		background-color: #424242;
-		cursor: not-allowed;
-	}
-	
-	
 </style>

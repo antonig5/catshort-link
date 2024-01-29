@@ -45,3 +45,19 @@ document.getElementById("copy").addEventListener("click", async function (e) {
     console.error("Failed to copy: ", err);
   }
 });
+
+document.getElementById("copy").addEventListener("click", function () {
+  var alertElement = document.getElementById("alert");
+  alertElement.style.display = "block"; // Mostrar el alert
+  setTimeout(function () {
+    alertElement.style.top = "10px"; // Mover hacia abajo para la animación
+  }, 10);
+
+  // Ocultar el alert y restablecer la posición después de 3 segundos
+  setTimeout(function () {
+    alertElement.style.top = "-152px"; // Mover hacia arriba
+    setTimeout(function () {
+      alertElement.style.display = "none";
+    }, 500); // Esperar a que termine la animación para ocultar
+  }, 3000);
+});

@@ -2,11 +2,12 @@
 interface Props {
     title: string
     id: string
+    disabled?: boolean
    
 }
-const { title,id  } = Astro.props
+const { title,id , disabled } = Astro.props
 ---
-<button class="button" type={"submit"} id={id}> {title}</button>
+<button class="button" disabled={disabled}  id={id}> {title}</button>
 
 <style>
     .button {
@@ -19,16 +20,24 @@ const { title,id  } = Astro.props
         display: inline-block;
         font-size: 16px;
         border-radius: 10px;
+        transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+        
     }
-    .button:hover {
-        background-color: #6a45d9;
-        cursor: pointer;
-        color: white
-    }
+    
     .button:active {
-        background-color: #6a45d9;
-        cursor: pointer;
-        color: white
+        transform: scale(0.9);
+  background-color: #6f1ac4; /* resultado de darken($button-bg, 5%) */
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+        
     }
+    .button:focus {
+        outline: 0;
+
+    }
+    .button:disabled{
+		background-color: #424242;
+		cursor: not-allowed;
+	}
+   
 
 </style>

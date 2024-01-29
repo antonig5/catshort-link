@@ -1,0 +1,48 @@
+---
+interface Props {
+     description: string
+    
+     id: string
+    
+}
+const { description,id  } = Astro.props
+---
+
+
+<div class="alert alert-primary" id={id}>
+    <p>{description}</p>
+   
+    
+  </div>
+
+  <style>
+    	.alert {
+            text-align: center;
+		padding: 20px;
+  
+    color: white;
+    border-radius: 15px;
+    position: fixed;
+    top: -100px; /* Inicialmente fuera de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: top 0.5s ease;
+}
+.alert-primary {
+  background: #11d02d;
+}
+
+.alert p{
+
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: white;
+  font-weight: bolder
+
+	
+}
+  </style>
