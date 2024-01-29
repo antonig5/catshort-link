@@ -17,14 +17,30 @@ document.getElementById("urlForm").addEventListener("submit", function (e) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
-      document.getElementById("response").innerHTML =
-        "<a class='form-a' target='_blank' href='" +
-        data.shortUrl +
-        "'>" +
-        data.shortUrl +
-        "</a>";
-      document.getElementById("copy").disabled = false;
+      if (data.error) {
+        var alertElement = document.getElementById("alert-error");
+        alertElement.style.display = "block"; // Mostrar el alert
+        setTimeout(function () {
+          alertElement.style.top = "10px"; // Mover hacia abajo para la animación
+        }, 10);
+
+        // Ocultar el alert y restablecer la posición después de 3 segundos
+        setTimeout(function () {
+          alertElement.style.top = "-152px"; // Mover hacia arriba
+          setTimeout(function () {
+            alertElement.style.display = "none";
+          }, 500); // Esperar a que termine la animación para ocultar
+        }, 3000);
+      } else {
+        console.log("Success:", data);
+        document.getElementById("response").innerHTML =
+          "<a class='form-a' target='_blank' href='" +
+          data.shortUrl +
+          "'>" +
+          data.shortUrl +
+          "</a>";
+        document.getElementById("copy").disabled = false;
+      }
     })
     .catch((error) => {
       console.error("Error:", error);

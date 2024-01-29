@@ -8,6 +8,7 @@ import Alert from '../components/Alert.astro';
 	<script src="../scripts/index.js">
 	</script>
 	<main>
+		
 		<h1>Acorta tus enlaces</h1>
 		<form id="urlForm" method="post">
 			<label for="url">URL</label>
@@ -18,8 +19,8 @@ import Alert from '../components/Alert.astro';
 			
 		</form>
 		<Button title="Copiar" disabled={true}  id="copy"/>
-		
-		<Alert id="alert" description='Link copiado correctamente' />
+		<Alert id="alert-error" description='Necesitas una Url para acortar' type='error'/>
+		<Alert id="alert" description='Link copiado correctamente' type='success' />
 		<div class="form-a" id="response"> </div>
 		
 		
@@ -43,6 +44,7 @@ import Alert from '../components/Alert.astro';
 	text-align: center;
 	background-color: aliceblue;
 	color: white;
+	margin-top: 15px;
 	}
 	h1 {
 		font-size: 4rem;
