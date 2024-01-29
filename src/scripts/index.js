@@ -6,7 +6,7 @@ document.getElementById("urlForm").addEventListener("submit", function (e) {
 
   const data = { url: url, custom: custom };
 
-  fetch("https://api-links-7193v7hx3-antonig5.vercel.app/api", {
+  fetch("https://api-link-pwcl.onrender.com/api", {
     method: "POST",
     mode: "cors",
     headers: {
