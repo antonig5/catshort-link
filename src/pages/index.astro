@@ -1,70 +1,80 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
-import Alert from '../components/Alert.astro';
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Alert from "../components/Alert.astro";
+import Tabs from "../components/Tabs.astro";
+import Form from "../components/Form.astro";
+import Input from "../components/Input.astro";
 ---
 
 <Layout title="Catshort">
-	<script src="../scripts/index.js">
-	</script>
-	<main>
-		
-		<h1>Acorta tus enlaces</h1>
-		<form id="urlForm" method="post">
-			<label for="url">URL</label>
-			<input type="text" name="url" id="url" placeholder="https://example.com" />
-			<label for="custom">Sobre nombre</label>
-			<input type="text" name="custom" id="custom" placeholder="Cat" />
-			<Button title="Acortar" id='short'/>
-			
-		</form>
-		<Button title="Copiar" disabled={true}  id="copy"/>
-		<Alert id="alert-error" description='Necesitas una Url para acortar' type='error'/>
-		<Alert id="alert" description='Link copiado correctamente' type='success' />
-		<div class="form-a" id="response"> </div>
-		
-		
-	</main>
+  <script src="../scripts/index.js"></script>
+  <main>
+    <Tabs>
+      <!-- formulario para acortar el enlace -->
+      <h1>Acorta tus enlaces</h1>
+      <Form id="urlForm" method="post">
+        <label for="url">URL</label>
+        <Input name="url" id="url" placeholder="https://example.com" />
+        <label for="custom">Sobre nombre</label>
+        <Input name="custom" id="custom" placeholder="Cat" />
+
+        <Button title="Acortar" id="short" />
+      </Form>
+
+      <Button title="Copiar" disabled={true} id="copy" />
+      <Alert
+        id="alert-error"
+        description="Necesitas una Url para acortar"
+        type="error"
+      />
+      <Alert
+        id="alert"
+        description="Link copiado correctamente"
+        type="success"
+      />
+      <div class="form-a" id="response"></div>
+      <!-- formulario para verificar el enlace -->
+      <div slot="after-footer">
+        <h1>Verifica tus enlaces</h1>
+
+        <Form id="verifyForm" method="post">
+          <Input
+            name="urlVerify"
+            id="urlVerify"
+            placeholder="https://example.com"
+          />
+          <Button title="Verificar" id="verify" />
+        </Form>
+      </div>
+    </Tabs>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.form-a {
-	border-radius: 10px;
-	border: solid 1px #6a45d9;
-	text-decoration: none;
-	text-align: center;
-	background-color: aliceblue;
-	color: white;
-	margin-top: 15px;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 1rem;
-	}
-	input {
-		padding: 1rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		border-radius: 4px;
-		background-color: rgba(var(--accent-light), 25%);
-		color: rgb(var(--accent-light));
-		font-size: 1rem;
-	}
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .form-a {
+    border-radius: 10px;
+    border: solid 1px #6a45d9;
+    text-decoration: none;
+    text-align: center;
+    background-color: aliceblue;
+    color: white;
+    margin-top: 15px;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
 </style>
