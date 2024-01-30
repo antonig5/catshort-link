@@ -47,6 +47,45 @@ document.getElementById("urlForm").addEventListener("submit", function (e) {
     });
 });
 
+document.getElementById("verifyForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const url = document.getElementById("urlVerify").value;
+  const data = { url: url };
+  fetch("https://api-link-pwcl.onrender.com/api/verify", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        var alertElement = document.getElementById("alert-error");
+        alertElement.style.display = "block"; // Mostrar el alert
+        setTimeout(function () {
+          alertElement.style.top = "10px"; // Mover hacia abajo para la animación
+        }, 10);
+
+        // Ocultar el alert y restablecer la posición：
+        setTimeout(function () {
+          alertElement.style.top = "-152px"; // Mover hacia arriba
+          setTimeout(function () {
+            alertElement.style.display = "none";
+          }, 500); // Esperar a que termine la animación para ocultar
+        }, 3000);
+      } else {
+        document.getElementById("response-verify").innerHTML =
+          "<h2>" + data.message + "</h2>";
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+
 document.getElementById("copy").addEventListener("click", async function (e) {
   e.preventDefault();
 
